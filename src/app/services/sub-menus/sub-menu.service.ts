@@ -23,7 +23,18 @@ export class SubMenuService {
     return this.httpClient.get(`${environment.globalCms}/global/cms/api/v1/ClientSubMenu/client-menu/${clientMenuId}`)
   }
 
+  /**
+   *
+   *
+   * @param {*} payload
+   * @returns {Observable<any>}
+   * @memberof SubMenuService
+   */
   addSubMenu(payload: any): Observable<any> {
     return this.httpClient.post(`${environment.globalCms}/global/cms/api/v1/ClientSubMenu`, payload)
+  }
+
+  getSubMenuByServiceId(serviceId: number): Observable<any> {
+    return this.httpClient.get(`${environment.globalCms}/global/cms/api/v1/ClientSubMenu/service/${serviceId}`)
   }
 }

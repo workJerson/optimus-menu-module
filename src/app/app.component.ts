@@ -5,6 +5,7 @@ import { ModuleService } from './services/modules/module.service'
 import { ResourceTypeService } from './services/resourceTypes/resource-type.service'
 import { ResourceService } from './services/resources/resource.service'
 import { ResourceGroupService } from './services/resourceGroups/resource-group.service'
+import { ClientMenuModuleService } from './services/client-menu-modules/client-menu-module.service'
 import { ThrowStmt } from '@angular/compiler'
 
 
@@ -22,7 +23,7 @@ export class AppComponent {
   serviceTypes: any[] = []
   selectedServiceType: number
   menuList: any[] = []
-  serviceId: Number
+  serviceId: number
   display: string
   description: string
   index: number
@@ -38,7 +39,6 @@ export class AppComponent {
   modules: any[] = []
   moduleName: string
   moduleDescription: string
-
   // Resource Type
   resourceTypeId: string
   resourceTypeList: any[] = []
@@ -56,6 +56,13 @@ export class AppComponent {
   resourceGroupDescription: string
   resourceGroupName: string
 
+  // Client Menu Module
+  clientMenuModuleList: any[] = []
+  selectedModuleId: number
+  selectedCMMMenuId: number
+  selectedCMMSubMenuId: number
+  clientMenuModuleSubMenuList: any[] = []
+
   constructor(
     private menuService: MenuService,
     private subMenuService: SubMenuService,
@@ -63,6 +70,7 @@ export class AppComponent {
     private resourceTypeService: ResourceTypeService,
     private resourceService: ResourceService,
     private resourceGroupService: ResourceGroupService,
+    private clientMenuModuleService: ClientMenuModuleService,
 
   ) {
     this.getServiceTypes()
@@ -70,6 +78,43 @@ export class AppComponent {
     this.getAllResourceTypes()
     this.getAllResource()
     this.getAllResourceGroup()
+  }
+
+  /**
+   *
+   *
+   * @memberof AppComponent
+   */
+  getSubMenuByServiceId() {
+    this
+      .subMenuService
+      .getSubMenuByServiceId(this.serviceId)
+      .subscribe((result) => {
+        (
+          {
+            data: {
+              clientSubMenu: this.clientMenuModuleSubMenuList
+            }
+
+          } = result
+        )
+      })
+  }
+  /**
+   *
+   *
+   * @memberof AppComponent
+   */
+  getAllClientMenuModules() {
+    this
+      .clientMenuModuleService
+      .getAllClientMenuModule(this.serviceId)
+      .subscribe((result) => {
+        const {
+          data
+        } = result
+        this.clientMenuModuleList = data
+      })
   }
 
   /**
@@ -89,7 +134,6 @@ export class AppComponent {
             }
           } = result
         )
-        console.log(result)
       })
   }
   /**
@@ -189,6 +233,9 @@ export class AppComponent {
           } = result
         )
       })
+    this.serviceId = serviceId
+    this.getAllClientMenuModules()
+    this.getSubMenuByServiceId()
   }
 
   /**
@@ -335,8 +382,35 @@ export class AppComponent {
       )
       .subscribe((result) => {
         if (result) {
-          console.log(result)
-          // location.reload()
+          location.reload()
+        }
+      })
+  }
+
+  /**
+   *
+   *
+   * @memberof AppComponent
+   */
+  submitClientMenuModule(){
+    let payload = {
+        clientMenuId: Number(this.selectedCMMMenuId),
+        clientSubMenuId: Number(this.selectedCMMSubMenuId),
+        moduleId:  Number(this.selectedModuleId)
+      }
+
+      for(var k in payload)
+        if(!payload[k]) delete payload[k];
+
+    this
+      .clientMenuModuleService
+      .addClientMenuModule(
+        payload
+      )
+      .subscribe((result) => {
+        if (result) {
+         console.log(result)
+          location.reload()
         }
       })
   }
