@@ -6,6 +6,7 @@ import { ResourceTypeService } from './services/resourceTypes/resource-type.serv
 import { ResourceService } from './services/resources/resource.service'
 import { ResourceGroupService } from './services/resourceGroups/resource-group.service'
 import { ClientMenuModuleService } from './services/client-menu-modules/client-menu-module.service'
+import { ModuleGroupService } from './services/module-group/module-group.service'
 import { ThrowStmt } from '@angular/compiler'
 
 
@@ -63,6 +64,11 @@ export class AppComponent {
   selectedCMMSubMenuId: number
   clientMenuModuleSubMenuList: any[] = []
 
+  // Module Group
+  moduleGroupList: any[] = []
+  moduleGroupModuleId: number
+  moduleGroupResourceGroupId: number
+
   constructor(
     private menuService: MenuService,
     private subMenuService: SubMenuService,
@@ -71,6 +77,7 @@ export class AppComponent {
     private resourceService: ResourceService,
     private resourceGroupService: ResourceGroupService,
     private clientMenuModuleService: ClientMenuModuleService,
+    private moduleGroupService: ModuleGroupService,
 
   ) {
     this.getServiceTypes()
@@ -78,8 +85,24 @@ export class AppComponent {
     this.getAllResourceTypes()
     this.getAllResource()
     this.getAllResourceGroup()
+    this.getModuleGroups()
   }
 
+  getModuleGroups() {
+    this
+    .moduleGroupService
+    .getAllModuleGroups()
+    .subscribe((result) => {
+      (
+        {
+          data: {
+            moduleGroup: this.moduleGroupList
+          }
+
+        } = result
+      )
+    })
+  }
   /**
    *
    *
