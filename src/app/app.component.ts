@@ -7,6 +7,7 @@ import { ResourceService } from './services/resources/resource.service'
 import { ResourceGroupService } from './services/resourceGroups/resource-group.service'
 import { ClientMenuModuleService } from './services/client-menu-modules/client-menu-module.service'
 import { ModuleGroupService } from './services/module-group/module-group.service'
+import { GroupResourceService } from './services/group-resources/group-resource.service'
 import { ThrowStmt } from '@angular/compiler'
 
 
@@ -68,6 +69,14 @@ export class AppComponent {
   moduleGroupList: any[] = []
   moduleGroupModuleId: number
   moduleGroupResourceGroupId: number
+  moduleGroupSelectedResourceGroupId: string
+  moduleGroupSelectedModuleId: string
+
+
+  //Group Resource
+  groupResourceList: any[] = []
+  groupResourceSelectedModuleGroupId: string
+  groupResourceSelectedResourceId: string
 
   constructor(
     private menuService: MenuService,
@@ -78,6 +87,7 @@ export class AppComponent {
     private resourceGroupService: ResourceGroupService,
     private clientMenuModuleService: ClientMenuModuleService,
     private moduleGroupService: ModuleGroupService,
+    private groupResourceService: GroupResourceService,
 
   ) {
     this.getServiceTypes()
@@ -86,8 +96,30 @@ export class AppComponent {
     this.getAllResource()
     this.getAllResourceGroup()
     this.getModuleGroups()
+    this.getGroupResources()
   }
 
+  getGroupResources(){
+    this
+    .groupResourceService
+    .getAllGroupResources()
+    .subscribe((result) => {
+      (
+        {
+          data: {
+            groupResource: this.groupResourceList
+          }
+
+        } = result
+      )
+    })
+  }
+
+  /**
+   *
+   *
+   * @memberof AppComponent
+   */
   getModuleGroups() {
     this
     .moduleGroupService
@@ -415,6 +447,28 @@ export class AppComponent {
    *
    * @memberof AppComponent
    */
+  submitModuleGroup(){
+    this
+      .moduleGroupService
+      .addModuleGroup(
+        {
+          moduleId: this.moduleGroupSelectedModuleId,
+          resourceGroupId: this.moduleGroupSelectedResourceGroupId,
+        }
+      )
+      .subscribe((result) => {
+        if (result) {
+          console.log(result)
+          // location.reload()
+        }
+      })
+
+  }
+  /**
+   *
+   *
+   * @memberof AppComponent
+   */
   submitClientMenuModule(){
     let payload = {
         clientMenuId: Number(this.selectedCMMMenuId),
@@ -437,4 +491,26 @@ export class AppComponent {
         }
       })
   }
+
+  /**
+   *
+   *
+   * @memberof AppComponent
+   */
+  submitGroupResource(){
+    this
+      .groupResourceService
+      .addGroupResource(
+        {
+          moduleGroupId: this.groupResourceSelectedModuleGroupId,
+          resourceId: this.groupResourceSelectedResourceId,
+        }
+      )
+      .subscribe((result) => {
+        if (result) {
+          console.log(result)
+          // location.reload()
+        }
+      })
+    }
 }

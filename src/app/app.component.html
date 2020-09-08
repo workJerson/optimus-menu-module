@@ -252,6 +252,160 @@
   <div class="">
     <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 mx-24 mt-12">
       <h1 class="block uppercase tracking-wide text-gray-700 text-2xl font-bold mb-2">
+        Client Menu Modules
+      </h1>
+      <div class="mb-6">
+        <table class="table-auto">
+          <thead>
+            <tr>
+              <th class="px-4 py-2">Menu</th>
+              <th class="px-4 py-2">Sub Menu</th>
+              <th class="px-4 py-2">Module</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngIf="clientMenuModuleList.length; else noModules">
+              <ng-container *ngFor="let clientMenuModule of clientMenuModuleList; let i = index">
+                <tr>
+                  <td class="border px-4 py-2">{{ clientMenuModule?.clientMenu?.display }}</td>
+                  <td class="border px-4 py-2">{{ clientMenuModule?.clientSubMenu?.display }}</td>
+                  <td class="border px-4 py-2">{{ clientMenuModule?.module?.moduleName }}</td>
+                </tr>
+              </ng-container>
+            </ng-container>
+            <ng-template #noModules>
+              <tr>
+                <td colspan="2" class="border px-4 py-2">No Data Found</td>
+              </tr>
+            </ng-template>
+          </tbody>
+        </table>
+      </div>
+      <div class="mb-6">
+        <label
+          class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+          for="grid-state"
+        >
+          Module
+        </label>
+        <div class="relative">
+          <select
+            class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            id="grid-state"
+            [(ngModel)]="selectedModuleId"
+          >
+            <ng-container *ngIf="modules.length; else noServiceTypes">
+              <ng-container *ngFor="let module of modules">
+                <option [value]="module?.moduleId">{{ module.moduleName }}</option>
+              </ng-container>
+            </ng-container>
+            <ng-template #noServiceTypes>
+              <option>No Data Found</option>
+            </ng-template>
+          </select>
+          <div
+            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+          >
+            <svg
+              class="fill-current h-4 w-4"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="mb-6">
+        <label
+          class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+          for="grid-state"
+        >
+          Menu
+        </label>
+        <div class="relative">
+          <select
+            class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            id="grid-state"
+            [(ngModel)]="selectedCMMMenuId"
+          >
+            <ng-container *ngIf="menuList.length; else noMenus">
+              <ng-container *ngFor="let menu of menuList">
+                <option [value]="menu?.clientMenuId">{{ menu.display }}</option>
+              </ng-container>
+            </ng-container>
+            <ng-template #noMenus>
+              <option>No Data Found</option>
+            </ng-template>
+          </select>
+          <div
+            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+          >
+            <svg
+              class="fill-current h-4 w-4"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="mb-6">
+        <label
+          class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+          for="grid-state"
+        >
+          Sub Menu
+        </label>
+        <div class="relative">
+          <select
+            class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            id="grid-state"
+            [(ngModel)]="selectedCMMSubMenuId"
+          >
+            <ng-container *ngIf="clientMenuModuleSubMenuList.length; else noMenus">
+              <ng-container *ngFor="let subMenu of clientMenuModuleSubMenuList">
+                <option [value]="subMenu?.clientSubMenuId">{{ subMenu .display }}</option>
+              </ng-container>
+            </ng-container>
+            <ng-template #noMenus>
+              <option>No Data Found</option>
+            </ng-template>
+          </select>
+          <div
+            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+          >
+            <svg
+              class="fill-current h-4 w-4"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center justify-between">
+        <button
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          type="button"
+          (click)="submitClientMenuModule()"
+        >
+          Insert
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="">
+    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 mx-24 mt-12">
+      <h1 class="block uppercase tracking-wide text-gray-700 text-2xl font-bold mb-2">
         Module
       </h1>
       <div class="mb-6">
@@ -558,160 +712,6 @@
   <div class="">
     <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 mx-24 mt-12">
       <h1 class="block uppercase tracking-wide text-gray-700 text-2xl font-bold mb-2">
-        Client Menu Modules
-      </h1>
-      <div class="mb-6">
-        <table class="table-auto">
-          <thead>
-            <tr>
-              <th class="px-4 py-2">Menu</th>
-              <th class="px-4 py-2">Sub Menu</th>
-              <th class="px-4 py-2">Module</th>
-            </tr>
-          </thead>
-          <tbody>
-            <ng-container *ngIf="clientMenuModuleList.length; else noModules">
-              <ng-container *ngFor="let clientMenuModule of clientMenuModuleList; let i = index">
-                <tr>
-                  <td class="border px-4 py-2">{{ clientMenuModule?.clientMenu?.display }}</td>
-                  <td class="border px-4 py-2">{{ clientMenuModule?.clientSubMenu?.display }}</td>
-                  <td class="border px-4 py-2">{{ clientMenuModule?.module?.moduleName }}</td>
-                </tr>
-              </ng-container>
-            </ng-container>
-            <ng-template #noModules>
-              <tr>
-                <td colspan="2" class="border px-4 py-2">No Data Found</td>
-              </tr>
-            </ng-template>
-          </tbody>
-        </table>
-      </div>
-      <div class="mb-6">
-        <label
-          class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-          for="grid-state"
-        >
-          Module
-        </label>
-        <div class="relative">
-          <select
-            class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-            id="grid-state"
-            [(ngModel)]="selectedModuleId"
-          >
-            <ng-container *ngIf="modules.length; else noServiceTypes">
-              <ng-container *ngFor="let module of modules">
-                <option [value]="module?.moduleId">{{ module.moduleName }}</option>
-              </ng-container>
-            </ng-container>
-            <ng-template #noServiceTypes>
-              <option>No Data Found</option>
-            </ng-template>
-          </select>
-          <div
-            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
-          >
-            <svg
-              class="fill-current h-4 w-4"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-            >
-              <path
-                d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
-              />
-            </svg>
-          </div>
-        </div>
-      </div>
-      <div class="mb-6">
-        <label
-          class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-          for="grid-state"
-        >
-          Menu
-        </label>
-        <div class="relative">
-          <select
-            class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-            id="grid-state"
-            [(ngModel)]="selectedCMMMenuId"
-          >
-            <ng-container *ngIf="menuList.length; else noMenus">
-              <ng-container *ngFor="let menu of menuList">
-                <option [value]="menu?.clientMenuId">{{ menu.display }}</option>
-              </ng-container>
-            </ng-container>
-            <ng-template #noMenus>
-              <option>No Data Found</option>
-            </ng-template>
-          </select>
-          <div
-            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
-          >
-            <svg
-              class="fill-current h-4 w-4"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-            >
-              <path
-                d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
-              />
-            </svg>
-          </div>
-        </div>
-      </div>
-      <div class="mb-6">
-        <label
-          class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-          for="grid-state"
-        >
-          Sub Menu
-        </label>
-        <div class="relative">
-          <select
-            class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-            id="grid-state"
-            [(ngModel)]="selectedCMMSubMenuId"
-          >
-            <ng-container *ngIf="clientMenuModuleSubMenuList.length; else noMenus">
-              <ng-container *ngFor="let subMenu of clientMenuModuleSubMenuList">
-                <option [value]="subMenu?.clientSubMenuId">{{ subMenu .display }}</option>
-              </ng-container>
-            </ng-container>
-            <ng-template #noMenus>
-              <option>No Data Found</option>
-            </ng-template>
-          </select>
-          <div
-            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
-          >
-            <svg
-              class="fill-current h-4 w-4"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-            >
-              <path
-                d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
-              />
-            </svg>
-          </div>
-        </div>
-      </div>
-      <div class="flex items-center justify-between">
-        <button
-          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          type="button"
-          (click)="submitClientMenuModule()"
-        >
-          Insert
-        </button>
-      </div>
-    </div>
-  </div>
-  <div class="">
-    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 mx-24 mt-12">
-      <h1 class="block uppercase tracking-wide text-gray-700 text-2xl font-bold mb-2">
         Module Group
       </h1>
       <div class="mb-6">
@@ -750,11 +750,11 @@
           <select
             class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
             id="grid-state"
-            [(ngModel)]="selectedModuleId"
+            [(ngModel)]="moduleGroupSelectedModuleId"
           >
             <ng-container *ngIf="modules.length; else noServiceTypes">
               <ng-container *ngFor="let module of modules">
-                <option [value]="module?.moduleId">{{ module.moduleName }}</option>
+                <option [value]="module?.guid">{{ module.moduleName }}</option>
               </ng-container>
             </ng-container>
             <ng-template #noServiceTypes>
@@ -781,54 +781,17 @@
           class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
           for="grid-state"
         >
-          Menu
+          Resource Group
         </label>
         <div class="relative">
           <select
             class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
             id="grid-state"
-            [(ngModel)]="selectedCMMMenuId"
+            [(ngModel)]="moduleGroupSelectedResourceGroupId"
           >
-            <ng-container *ngIf="menuList.length; else noMenus">
-              <ng-container *ngFor="let menu of menuList">
-                <option [value]="menu?.clientMenuId">{{ menu.display }}</option>
-              </ng-container>
-            </ng-container>
-            <ng-template #noMenus>
-              <option>No Data Found</option>
-            </ng-template>
-          </select>
-          <div
-            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
-          >
-            <svg
-              class="fill-current h-4 w-4"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-            >
-              <path
-                d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
-              />
-            </svg>
-          </div>
-        </div>
-      </div>
-      <div class="mb-6">
-        <label
-          class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-          for="grid-state"
-        >
-          Sub Menu
-        </label>
-        <div class="relative">
-          <select
-            class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-            id="grid-state"
-            [(ngModel)]="selectedCMMSubMenuId"
-          >
-            <ng-container *ngIf="clientMenuModuleSubMenuList.length; else noMenus">
-              <ng-container *ngFor="let subMenu of clientMenuModuleSubMenuList">
-                <option [value]="subMenu?.clientSubMenuId">{{ subMenu .display }}</option>
+            <ng-container *ngIf="resourceGroupList.length; else noMenus">
+              <ng-container *ngFor="let resourceGroup of resourceGroupList">
+                <option [value]="resourceGroup?.resourceGroupId">{{ resourceGroup.description }}</option>
               </ng-container>
             </ng-container>
             <ng-template #noMenus>
@@ -854,7 +817,124 @@
         <button
           class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           type="button"
-          (click)="submitClientMenuModule()"
+          (click)="submitModuleGroup()"
+        >
+          Insert
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="">
+    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 mx-24 mt-12">
+      <h1 class="block uppercase tracking-wide text-gray-700 text-2xl font-bold mb-2">
+        Group Resource
+      </h1>
+      <div class="mb-6">
+        <table class="table-auto">
+          <thead>
+            <tr>
+              <th class="px-4 py-2">Module Name</th>
+              <th class="px-4 py-2">Resource Name</th>
+              <th class="px-4 py-2">Resource Path</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngIf="groupResourceList.length; else noModules">
+              <ng-container *ngFor="let groupResource of groupResourceList; let i = index">
+                <tr>
+                  <td class="border px-4 py-2">{{ groupResource?.moduleName }}</td>
+                  <td class="border px-4 py-2">{{ groupResource?.resourceName }}</td>
+                  <td class="border px-4 py-2">{{ groupResource?.path }}</td>
+                </tr>
+              </ng-container>
+            </ng-container>
+            <ng-template #noModules>
+              <tr>
+                <td colspan="2" class="border px-4 py-2">No Data Found</td>
+              </tr>
+            </ng-template>
+          </tbody>
+        </table>
+      </div>
+      <div class="mb-6">
+        <label
+          class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+          for="grid-state"
+        >
+          Module Group
+        </label>
+        <div class="relative">
+          <select
+            class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            id="grid-state"
+            [(ngModel)]="groupResourceSelectedModuleGroupId"
+          >
+            <ng-container *ngIf="moduleGroupList.length; else noServiceTypes">
+              <ng-container *ngFor="let moduleGroup of moduleGroupList">
+                <option [value]="moduleGroup?.moduleGroupId">{{ moduleGroup?.moduleName }} ({{ moduleGroup?.resourceGroupName }})</option>
+              </ng-container>
+            </ng-container>
+            <ng-template #noServiceTypes>
+              <option>No Data Found</option>
+            </ng-template>
+          </select>
+          <div
+            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+          >
+            <svg
+              class="fill-current h-4 w-4"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="mb-6">
+        <label
+          class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+          for="grid-state"
+        >
+          Resource
+        </label>
+        <div class="relative">
+          <select
+            class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            id="grid-state"
+            [(ngModel)]="groupResourceSelectedResourceId"
+          >
+            <ng-container *ngIf="resourceList.length; else noMenus">
+              <ng-container *ngFor="let resource of resourceList">
+                <option [value]="resource?.resourceId">{{ resource?.resourceName }} [{{ resource?.path }}]</option>
+              </ng-container>
+            </ng-container>
+            <ng-template #noMenus>
+              <option>No Data Found</option>
+            </ng-template>
+          </select>
+          <div
+            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+          >
+            <svg
+              class="fill-current h-4 w-4"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center justify-between">
+        <button
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          type="button"
+          (click)="submitGroupResource()"
         >
           Insert
         </button>
