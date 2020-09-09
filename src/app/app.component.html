@@ -1,4 +1,5 @@
 <div class="content-center">
+  <!-- Client Menu -->
   <div class="">
     <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 mx-24 mt-12">
       <h1 class="block uppercase tracking-wide text-gray-700 text-2xl font-bold mb-2">Menu</h1>
@@ -41,26 +42,28 @@
         </div>
       </div>
       <div class="mb-6">
-        <table class="table-auto">
-          <thead>
-            <tr>
-              <th class="px-4 py-2">Display Name</th>
-              <th class="px-4 py-2">Description</th>
-              <th class="px-4 py-2">Index</th>
+        <table class="text-left w-full">
+          <thead class="bg-black flex text-white w-full">
+            <tr class="flex w-full">
+              <th class="p-4 w-1/2">Display Name</th>
+              <th class="p-4 w-1/2">Description</th>
+              <th class="p-4 w-1/2">Index</th>
             </tr>
           </thead>
-          <tbody>
+
+          <!-- Remove the nasty inline CSS fixed height on production and replace it with a CSS class — this is just for demonstration purposes! -->
+          <tbody class="bg-grey-light flex flex-col items-center justify-between overflow-y-scroll w-full" style="height: 25vh;">
             <ng-container *ngIf="menuList.length; else noMenuList">
               <ng-container *ngFor="let menu of menuList; let i = index">
-                <tr>
-                  <td class="border px-4 py-2">{{ menu?.display }}</td>
-                  <td class="border px-4 py-2">{{ menu?.description }}</td>
-                  <td class="border px-4 py-2">{{ menu?.index }}</td>
+                <tr class="flex w-full">
+                  <td class="border p-4 w-1/2">{{ menu?.display }}</td>
+                  <td class="border p-4 w-1/2">{{ menu?.description }}</td>
+                  <td class="border p-4 w-1/2">{{ menu?.index }}</td>
                 </tr>
               </ng-container>
             </ng-container>
             <ng-template #noMenuList>
-              <tr>
+              <tr class="flex w-full">
                 <td colspan="3" class="border px-4 py-2">No Data Found</td>
               </tr>
             </ng-template>
@@ -123,6 +126,7 @@
       </div>
     </div>
   </div>
+  <!-- Client Sub Menu -->
   <div class="">
     <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 mx-24 mt-12">
       <h1 class="block uppercase tracking-wide text-gray-700 text-2xl font-bold mb-2">
@@ -167,27 +171,28 @@
         </div>
       </div>
       <div class="mb-6">
-        <table class="table-auto">
-          <thead>
-            <tr>
-              <th class="px-4 py-2">Display Name</th>
-              <th class="px-4 py-2">Description</th>
-              <th class="px-4 py-2">Index</th>
+        <table class="text-left w-full">
+          <thead class="bg-black flex text-white w-full">
+            <tr class="flex w-full">
+              <th class="p-4 w-1/2">Display Name</th>
+              <th class="p-4 w-1/2">Description</th>
+              <th class="p-4 w-1/2">Index</th>
             </tr>
           </thead>
-          <tbody>
+          <!-- Remove the nasty inline CSS fixed height on production and replace it with a CSS class — this is just for demonstration purposes! -->
+          <tbody class="bg-grey-light flex flex-col items-center justify-between overflow-y-scroll w-full" style="height: 10vh;">
             <ng-container *ngIf="subMenuList.length; else noSubMenuList">
               <ng-container *ngFor="let subMenu of subMenuList; let i = index">
-                <tr>
-                  <td class="border px-4 py-2">{{ subMenu?.display }}</td>
-                  <td class="border px-4 py-2">{{ subMenu?.description }}</td>
-                  <td class="border px-4 py-2">{{ subMenu?.index }}</td>
+                <tr class="flex w-full m-0">
+                  <td class="border p-4 w-1/2">{{ subMenu?.display }}</td>
+                  <td class="border p-4 w-1/2">{{ subMenu?.description }}</td>
+                  <td class="border p-4 w-1/2">{{ subMenu?.index }}</td>
                 </tr>
               </ng-container>
             </ng-container>
             <ng-template #noSubMenuList>
-              <tr>
-                <td colspan="3" class="border px-4 py-2">No Data Found</td>
+              <tr class="flex w-full">
+                <td colspan="3" class="border p-4 w-1/2">No Data Found</td>
               </tr>
             </ng-template>
           </tbody>
@@ -249,33 +254,35 @@
       </div>
     </div>
   </div>
+  <!-- Client Menu Modules -->
   <div class="">
     <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 mx-24 mt-12">
       <h1 class="block uppercase tracking-wide text-gray-700 text-2xl font-bold mb-2">
         Client Menu Modules
       </h1>
       <div class="mb-6">
-        <table class="table-auto">
-          <thead>
-            <tr>
-              <th class="px-4 py-2">Menu</th>
-              <th class="px-4 py-2">Sub Menu</th>
-              <th class="px-4 py-2">Module</th>
+        <table class="text-left w-full">
+          <thead class="bg-black flex text-white w-full">
+            <tr class="flex w-full">
+              <th class="p-4 w-1/2">Menu</th>
+              <th class="p-4 w-1/2">Sub Menu</th>
+              <th class="p-4 w-1/2">Module</th>
             </tr>
           </thead>
-          <tbody>
+          <!-- Remove the nasty inline CSS fixed height on production and replace it with a CSS class — this is just for demonstration purposes! -->
+          <tbody class="bg-grey-light flex flex-col items-center justify-between overflow-y-scroll w-full" style="height: 49vh;">
             <ng-container *ngIf="clientMenuModuleList.length; else noModules">
               <ng-container *ngFor="let clientMenuModule of clientMenuModuleList; let i = index">
-                <tr>
-                  <td class="border px-4 py-2">{{ clientMenuModule?.clientMenu?.display }}</td>
-                  <td class="border px-4 py-2">{{ clientMenuModule?.clientSubMenu?.display }}</td>
-                  <td class="border px-4 py-2">{{ clientMenuModule?.module?.moduleName }}</td>
+                <tr class="flex w-full">
+                  <td class="border p-4 w-1/2">{{ clientMenuModule?.clientMenu?.display }}</td>
+                  <td class="border p-4 w-1/2">{{ clientMenuModule?.clientSubMenu?.display }}</td>
+                  <td class="border p-4 w-1/2">{{ clientMenuModule?.module?.moduleName }}</td>
                 </tr>
               </ng-container>
             </ng-container>
             <ng-template #noModules>
-              <tr>
-                <td colspan="2" class="border px-4 py-2">No Data Found</td>
+              <tr class="flex w-full">
+                <td colspan="3" class="border p-4 w-full">No Data Found</td>
               </tr>
             </ng-template>
           </tbody>
@@ -403,33 +410,35 @@
       </div>
     </div>
   </div>
+  <!-- Module -->
   <div class="">
     <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 mx-24 mt-12">
       <h1 class="block uppercase tracking-wide text-gray-700 text-2xl font-bold mb-2">
         Module
       </h1>
       <div class="mb-6">
-        <table class="table-auto">
-          <thead>
-            <tr>
-              <th class="px-4 py-2">Module Name</th>
-              <th class="px-4 py-2">Description</th>
-              <th class="px-4 py-2">Resource Type Name</th>
+        <table class="text-left w-full">
+          <thead class="bg-black flex text-white w-full">
+            <tr class="flex w-full">
+              <th class="p-4 w-1/2">Module Name</th>
+              <th class="p-4 w-1/2">Description</th>
+              <th class="p-4 w-1/2">Resource Type Name</th>
             </tr>
           </thead>
-          <tbody>
+          <!-- Remove the nasty inline CSS fixed height on production and replace it with a CSS class — this is just for demonstration purposes! -->
+          <tbody class="bg-grey-light flex flex-col items-center justify-between overflow-y-scroll w-full" style="height: 50vh;">
             <ng-container *ngIf="modules.length; else noModules">
               <ng-container *ngFor="let module of modules; let i = index">
-                <tr>
-                  <td class="border px-4 py-2">{{ module?.moduleName }}</td>
-                  <td class="border px-4 py-2">{{ module?.description }}</td>
-                  <td class="border px-4 py-2">{{ module?.resourceTypeName }}</td>
+                <tr class="flex w-full">
+                  <td class="border p-4 w-1/2">{{ module?.moduleName }}</td>
+                  <td class="border p-4 w-1/2">{{ module?.description }}</td>
+                  <td class="border p-4 w-1/2">{{ module?.resourceTypeName }}</td>
                 </tr>
               </ng-container>
             </ng-container>
             <ng-template #noModules>
-              <tr>
-                <td colspan="3" class="border px-4 py-2">No Data Found</td>
+              <tr class="flex w-full">
+                <td colspan="3" class="border p-4 w-1/2">No Data Found</td>
               </tr>
             </ng-template>
           </tbody>
@@ -514,31 +523,33 @@
       </div>
     </div>
   </div>
+  <!-- Resource -->
   <div class="">
     <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 mx-24 mt-12">
       <h1 class="block uppercase tracking-wide text-gray-700 text-2xl font-bold mb-2">
         Resource
       </h1>
       <div class="mb-6 overflow-auto">
-        <table class="text-left h-full">
-          <thead>
-            <tr>
-              <th class="px-4 py-2">Resource Name</th>
-              <th class="px-4 py-2">Description</th>
-              <th class="px-4 py-2">Method</th>
-              <th class="px-4 py-2">Path</th>
-              <th class="px-4 py-2">Allow Anonymous</th>
+        <table class="text-left w-full">
+          <thead class="bg-black flex text-white w-full">
+            <tr class="flex w-full">
+              <th class="p-4 w-1/2">Resource Name</th>
+              <th class="p-4 w-1/2">Description</th>
+              <th class="p-4 w-1/2">Method</th>
+              <th class="p-4 w-1/2">Path</th>
+              <th class="p-4 w-1/2">Allow Anonymous</th>
             </tr>
           </thead>
-          <tbody class="overflow-y-scroll" style="height: 50vh;">
+          <!-- Remove the nasty inline CSS fixed height on production and replace it with a CSS class — this is just for demonstration purposes! -->
+          <tbody class="bg-grey-light flex flex-col items-center justify-between overflow-y-scroll w-full" style="height: 50vh;">
             <ng-container *ngIf="resourceList.length; else noModules">
               <ng-container *ngFor="let resource of resourceList; let i = index">
-                <tr>
-                  <td class="border px-4 py-2">{{ resource?.resourceName }}</td>
-                  <td class="border px-4 py-2">{{ resource?.description }}</td>
-                  <td class="border px-4 py-2">{{ resource?.method }}</td>
-                  <td class="border px-4 py-2">{{ resource?.path }}</td>
-                  <td class="border px-4 py-2">{{ resource?.allowAnonymous }}</td>
+                <tr class="flex w-full">
+                  <td class="border p-4 w-1/2">{{ resource?.resourceName }}</td>
+                  <td class="border p-4 w-1/2">{{ resource?.description }}</td>
+                  <td class="border p-4 w-1/2">{{ resource?.method }}</td>
+                  <td class="border p-4 w-1/2">{{ resource?.path }}</td>
+                  <td class="border p-4 w-1/2">{{ resource?.allowAnonymous }}</td>
                 </tr>
               </ng-container>
             </ng-container>
@@ -637,30 +648,33 @@
       </div>
     </div>
   </div>
+  <!-- Resource Group -->
   <div class="">
     <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 mx-24 mt-12">
       <h1 class="block uppercase tracking-wide text-gray-700 text-2xl font-bold mb-2">
         Resource Group
       </h1>
       <div class="mb-6">
-        <table class="table-auto">
-          <thead>
-            <tr>
-              <th class="px-4 py-2">Resource Group Name</th>
-              <th class="px-4 py-2">Description</th>
+        <table class="text-left w-full">
+          <thead class="bg-black flex text-white w-full">
+            <tr class="flex w-full">
+              <th class="p-4 w-1/2">Resource Group Name</th>
+              <th class="p-4 w-1/2">Description</th>
             </tr>
           </thead>
-          <tbody>
+
+          <!-- Remove the nasty inline CSS fixed height on production and replace it with a CSS class — this is just for demonstration purposes! -->
+          <tbody class="bg-grey-light flex flex-col items-center justify-between overflow-y-scroll w-full" style="height: 18vh;">
             <ng-container *ngIf="resourceGroupList.length; else noModules">
               <ng-container *ngFor="let resourceGroup of resourceGroupList; let i = index">
-                <tr>
-                  <td class="border px-4 py-2">{{ resourceGroup?.resourceGroupName }}</td>
-                  <td class="border px-4 py-2">{{ resourceGroup?.description }}</td>
+                <tr class="flex w-full">
+                  <td class="border p-4 w-1/2">{{ resourceGroup?.resourceGroupName }}</td>
+                  <td class="border p-4 w-1/2">{{ resourceGroup?.description }}</td>
                 </tr>
               </ng-container>
             </ng-container>
             <ng-template #noModules>
-              <tr>
+              <tr class="flex w-full">
                 <td colspan="2" class="border px-4 py-2">No Data Found</td>
               </tr>
             </ng-template>
@@ -709,31 +723,33 @@
       </div>
     </div>
   </div>
+  <!-- Module Group -->
   <div class="">
     <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 mx-24 mt-12">
       <h1 class="block uppercase tracking-wide text-gray-700 text-2xl font-bold mb-2">
         Module Group
       </h1>
       <div class="mb-6">
-        <table class="table-auto">
-          <thead>
-            <tr>
-              <th class="px-4 py-2">Module</th>
-              <th class="px-4 py-2">Resource Group</th>
+        <table class="text-left w-full">
+          <thead class="bg-black flex text-white w-full">
+            <tr class="flex w-full">
+              <th class="p-4 w-1/2">Module</th>
+              <th class="p-4 w-1/2">Resource Group</th>
             </tr>
           </thead>
-          <tbody>
+          <!-- Remove the nasty inline CSS fixed height on production and replace it with a CSS class — this is just for demonstration purposes! -->
+          <tbody class="bg-grey-light flex flex-col items-center justify-between overflow-y-scroll w-full" style="height: 50vh;">
             <ng-container *ngIf="moduleGroupList.length; else noModules">
               <ng-container *ngFor="let moduleGroup of moduleGroupList; let i = index">
-                <tr>
-                  <td class="border px-4 py-2">{{ moduleGroup?.moduleName }}</td>
-                  <td class="border px-4 py-2">{{ moduleGroup?.resourceGroupName }}</td>
+                <tr class="flex w-full">
+                  <td class="border p-4 w-1/2">{{ moduleGroup?.moduleName }}</td>
+                  <td class="border p-4 w-1/2">{{ moduleGroup?.resourceGroupName }}</td>
                 </tr>
               </ng-container>
             </ng-container>
             <ng-template #noModules>
-              <tr>
-                <td colspan="2" class="border px-4 py-2">No Data Found</td>
+              <tr class="flex w-full">
+                <td colspan="2" class="border p-4 w-1/2">No Data Found</td>
               </tr>
             </ng-template>
           </tbody>
@@ -824,37 +840,39 @@
       </div>
     </div>
   </div>
+  <!-- Group Resource -->
   <div class="">
     <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 mx-24 mt-12">
       <h1 class="block uppercase tracking-wide text-gray-700 text-2xl font-bold mb-2">
         Group Resource
       </h1>
-      <div class="mb-6">
-        <table class="table-auto">
-          <thead>
-            <tr>
-              <th class="px-4 py-2">Module Name</th>
-              <th class="px-4 py-2">Resource Name</th>
-              <th class="px-4 py-2">Resource Path</th>
-            </tr>
-          </thead>
-          <tbody>
-            <ng-container *ngIf="groupResourceList.length; else noModules">
-              <ng-container *ngFor="let groupResource of groupResourceList; let i = index">
-                <tr>
-                  <td class="border px-4 py-2">{{ groupResource?.moduleName }}</td>
-                  <td class="border px-4 py-2">{{ groupResource?.resourceName }}</td>
-                  <td class="border px-4 py-2">{{ groupResource?.path }}</td>
-                </tr>
-              </ng-container>
-            </ng-container>
-            <ng-template #noModules>
-              <tr>
-                <td colspan="2" class="border px-4 py-2">No Data Found</td>
+      <div class="mb-6"><table class="text-left w-full">
+        <thead class="bg-black flex text-white w-full">
+          <tr class="flex w-full">
+            <th class="p-4 w-1/2">Module Name</th>
+            <th class="p-4 w-1/2">Resource Name</th>
+            <th class="p-4 w-1/2">Resource Path</th>
+          </tr>
+        </thead>
+
+        <!-- Remove the nasty inline CSS fixed height on production and replace it with a CSS class — this is just for demonstration purposes! -->
+        <tbody class="bg-grey-light flex flex-col items-center justify-between overflow-y-scroll w-full" style="height: 50vh;">
+          <ng-container *ngIf="groupResourceList.length; else noModules">
+            <ng-container *ngFor="let groupResource of groupResourceList; let i = index">
+              <tr class="flex w-full">
+                <td class="border p-4 w-1/2">{{ groupResource?.moduleName }}</td>
+                <td class="border p-4 w-1/2">{{ groupResource?.resourceName }}</td>
+                <td class="border p-4 w-1/2">{{ groupResource?.path }}</td>
               </tr>
-            </ng-template>
-          </tbody>
-        </table>
+            </ng-container>
+          </ng-container>
+          <ng-template #noModules>
+            <tr class="flex w-full">
+              <td colspan="3" class="border p-4 w-1/2">No Data Found</td>
+            </tr>
+          </ng-template>
+        </tbody>
+      </table>
       </div>
       <div class="mb-6">
         <label
