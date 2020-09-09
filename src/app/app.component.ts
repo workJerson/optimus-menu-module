@@ -346,7 +346,7 @@ export class AppComponent {
       )
       .subscribe((result) => {
         if (result) {
-          location.reload()
+          // location.reload()
         }
       })
   }
@@ -369,7 +369,7 @@ export class AppComponent {
       )
       .subscribe((result) => {
         if (result) {
-          location.reload()
+          // location.reload()
         }
       })
   }
@@ -391,7 +391,7 @@ export class AppComponent {
       )
       .subscribe((result) => {
         if (result) {
-          location.reload()
+          // location.reload()
         }
       })
   }
@@ -415,7 +415,7 @@ export class AppComponent {
       )
       .subscribe((result) => {
         if (result) {
-          location.reload()
+          // location.reload()
         }
       })
   }
@@ -437,7 +437,7 @@ export class AppComponent {
       )
       .subscribe((result) => {
         if (result) {
-          location.reload()
+          // location.reload()
         }
       })
   }
@@ -459,7 +459,7 @@ export class AppComponent {
       .subscribe((result) => {
         if (result) {
           console.log(result)
-          // location.reload()
+          location.reload()
         }
       })
 
@@ -487,7 +487,7 @@ export class AppComponent {
       .subscribe((result) => {
         if (result) {
          console.log(result)
-          location.reload()
+          // location.reload()
         }
       })
   }
@@ -509,7 +509,7 @@ export class AppComponent {
       .subscribe((result) => {
         if (result) {
           console.log(result)
-          // location.reload()
+          location.reload()
         }
       })
     }

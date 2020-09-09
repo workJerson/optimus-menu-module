@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "optimus-menu-module"
+  "defaultProject": "optimus-menu-module",
+  "cli": {
+    "analytics": "0d6e74b6-a9bc-4109-a1ec-33dd1fc0c7a4"
+  }
 }
