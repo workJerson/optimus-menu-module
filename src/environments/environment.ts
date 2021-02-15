@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  globalCms: 'http://localhost:53313'
+  // globalCms: 'http://localhost:53313'
+  globalCms: 'https://global-cms-api.dev.xlog.asia'
+
 };
 
 /*
